@@ -209,7 +209,7 @@ Key functions:
 - Keep user-visible strings consistent with the app’s current humorous tone unless the task asks for tone changes.
 
 ## Repo-specific gotchas
-- The repo has **no README** or other setup docs; `CLAUDE.md` is the main operational guide.
+- As of now, the repo has no separate README or setup guide, so `CLAUDE.md` serves as the primary operational document.
 - The app is optimized around a fixed-width phone frame (`393px`) rather than a responsive desktop-first layout.
 - The entire repo is tiny in code footprint but relatively large on disk because the PNG assets total about 116 MB.
 - Several behaviors are intentionally randomized:
