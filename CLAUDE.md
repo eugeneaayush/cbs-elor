@@ -7,15 +7,15 @@
 - All image assets live at the repository root and are referenced directly by filename.
 
 ## Repository layout
-- `/home/runner/work/cbs-elor/cbs-elor/index.html`
+- `index.html`
   - The entire application lives here.
   - `<style>` block: all CSS for layout, views, animations, and component styling.
   - `<body>` markup: the phone shell plus the Discover, Matches, Detail, Games, Profile, and Match Overlay views.
   - `<script>` block: all seed data, UI state, rendering functions, swipe logic, and mini-game logic.
-- `/home/runner/work/cbs-elor/cbs-elor/*.png`
+- `*.png`
   - Static image assets for the fake profiles.
   - There are 33 PNGs in the repo root totaling about 116 MB.
-- `/home/runner/work/cbs-elor/cbs-elor/.claude/launch.json`
+- `.claude/launch.json`
   - Claude-specific launch config that serves the app with `python3 -m http.server 8765`.
 
 ## Tech stack
@@ -26,7 +26,7 @@
 - Google Fonts (`Poppins`) loaded via `@import`
 
 ## How to run locally
-From `/home/runner/work/cbs-elor/cbs-elor`:
+From the repository root:
 
 ```bash
 python3 -m http.server 8765
@@ -237,14 +237,12 @@ Key functions:
 Run the app:
 
 ```bash
-cd /home/runner/work/cbs-elor/cbs-elor
 python3 -m http.server 8765
 ```
 
 Quick file inspection:
 
 ```bash
-cd /home/runner/work/cbs-elor/cbs-elor
 ls
 ```
 
