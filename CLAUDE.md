@@ -14,6 +14,7 @@
   - `<script>` block: all seed data, UI state, rendering functions, swipe logic, and mini-game logic.
 - `/home/runner/work/cbs-elor/cbs-elor/*.png`
   - Static image assets for the fake profiles.
+  - There are 33 PNGs in the repo root totaling about 116 MB.
 - `/home/runner/work/cbs-elor/cbs-elor/.claude/launch.json`
   - Claude-specific launch config that serves the app with `python3 -m http.server 8765`.
 
@@ -46,6 +47,7 @@ Notes:
 - **Lint:** none configured
 - **Unit/integration tests:** none configured
 - **Primary validation method:** manual browser testing
+- **CI/workflows:** none present in the repository
 
 ## Required validation after changes
 Because there is no automated tooling, use manual smoke testing in a browser:
@@ -76,6 +78,12 @@ Because there is no automated tooling, use manual smoke testing in a browser:
 8. If you change asset names or profile data, verify every referenced image still loads.
 
 ## Application structure
+
+### File map inside `index.html`
+- Lines `1-225`: embedded CSS
+- Lines `226-379`: HTML structure
+- Lines `380-398`: seed data and randomized discover ordering
+- Lines `400-737`: UI logic and game logic
 
 ### 1. Discover view
 - Card stack rendered into `#cardStack`
@@ -170,6 +178,16 @@ Key functions:
 - `gameIdx`
 - `tdMode`
 
+## Behavior notes
+- The app uses direct DOM mutation and `innerHTML` rendering instead of a component system.
+- State is entirely in-memory; reloading the page resets matches, votes, photo positions, and game progress.
+- The experience targets modern browsers with support for:
+  - `pointer` events
+  - CSS transforms/transitions
+  - flexbox
+  - template literals and modern JavaScript syntax
+- Because the data is hardcoded and trusted, the current `innerHTML` usage is acceptable for this repo shape, but any move to user-generated content would require sanitization.
+
 ## Editing guidance
 - Keep changes **surgical**. This app is intentionally a single-file prototype.
 - Prefer updating existing inline CSS/JS/HTML instead of introducing frameworks, bundlers, or file splits unless explicitly requested.
@@ -193,6 +211,7 @@ Key functions:
 ## Repo-specific gotchas
 - The repo has **no README** or other setup docs; `CLAUDE.md` is the main operational guide.
 - The app is optimized around a fixed-width phone frame (`393px`) rather than a responsive desktop-first layout.
+- The entire repo is tiny in code footprint but relatively large on disk because the PNG assets total about 116 MB.
 - Several behaviors are intentionally randomized:
   - discover order is shuffled on load
   - right swipes only sometimes trigger a match overlay
